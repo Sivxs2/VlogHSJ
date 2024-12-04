@@ -1,0 +1,9 @@
+option_settings:
+  aws:autoscaling:launchconfiguration:
+    LaunchTemplateId: lt-0e734a736ce2453bb
+    LaunchTemplateVersion: 1
+  aws:autoscaling:asg:
+    MinSize: '1'
+    MaxSize: '4'
+  aws:ec2:instances:
+    InstanceTypes: t3.micro, t3.small
