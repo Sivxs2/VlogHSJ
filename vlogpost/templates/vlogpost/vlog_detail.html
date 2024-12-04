@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ vlogpost.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        header h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            margin: 0 auto;
+            display: block;
+        }
+        .metadata {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .description, .tags {
+            max-width: 800px;
+            margin: 15px auto;
+        }
+        .tags span {
+            display: inline-block;
+            background-color: #f1f1f1;
+            padding: 5px 10px;
+            margin: 5px 5px 0 0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ vlogpost.title }}</h1>
+    </header>
+    <main>
+        <!-- Video Section -->
+        <section>
+            {% if vlogpost.video_url %}
+                <iframe 
+                    src="{{ vlogpost.video_url }}" 
+                    frameborder="0" 
+                    allowfullscreen>
+                </iframe>
+            {% else %}
+                <p>No video available.</p>
+            {% endif %}
+        </section>
+
+        <!-- Metadata Section -->
+        <section class="metadata">
+            <p><strong>Author:</strong> {{ vlogpost.author }}</p>
+            <p><strong>Published on:</strong> {{ vlogpost.published_date }}</p>
+        </section>
+
+        <!-- Description Section -->
+        <section class="description">
+            <h3>Description:</h3>
+            <p>{{ vlogpost.description }}</p>
+        </section>
+
+        <!-- Tags Section -->
+        <section class="tags">
+            <h3>Tags:</h3>
+            {% if vlogpost.tags %}
+                {% for tag in vlogpost.tags.split %}
+                    <span>{{ tag }}</span>
+                {% endfor %}
+            {% else %}
+                <p>No tags available.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

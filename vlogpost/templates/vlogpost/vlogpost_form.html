@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Sets lenguage to EN -->
+<head>
+    <meta charset="UTF-8"> <!--Mentioned previously in the other html. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create/Edit Vlog Post</title>
+</head>
+<body>
+<h1>{{ view.title }}</h1>
+    {% if messages %}
+        {% for message in messages  %} <!-- Here we are creating the display of the success messagaes we created earlier -->
+            <div class>"alert alert-success"{{  message }}</div>
+        {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Vlog Post</button>
+    </form>
+    <a href="{% url 'vlog_list' %}">Back to vlog list</a>
+</body>
+</html>
