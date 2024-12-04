@@ -1,1 +1,1 @@
-web: gunicorn vlogproject.wsgip
+web: waitress-serve --port=8000 vlogproject.wsgi:application
